@@ -6,23 +6,36 @@
   <title>Office Game</title>
   <style>
     body {
+      /* Ensure full viewport and white background */
       background: #ffffff;
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 100vh;
+      min-height: 100vh; /* Use min-height in case content pushes past 100vh */
       margin: 0;
+      overflow-x: hidden; /* Prevent horizontal scrollbar on narrower screens */
+      padding: 10px; /* Add a little padding around the edge */
     }
+
     #game-container {
-      width: 1200px;
-      height: 800px;
-      max-width: 100%;
-      aspect-ratio: 4 / 3;
+      /* Use max-width/max-height for responsive scaling */
+      max-width: 95vw;    /* Use up to 95% of the viewport width */
+      max-height: 95vh;   /* Use up to 95% of the viewport height */
+      width: auto;        /* Let the browser determine the width based on max constraints */
+      height: auto;       /* Let the browser determine the height based on max constraints */
+      
+      /* THIS is key: forces the container to find the LARGEST size that fits */
+      /* within the max-width/max-height constraints while keeping 4:3 */
+      aspect-ratio: 4 / 3; 
+      
       background: #ffffff;
       border-radius: 12px;
       overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Optional: nice visual lift */
     }
+
     object {
+      /* Game object fills its container completely */
       width: 100%;
       height: 100%;
     }
@@ -34,6 +47,7 @@
   <div id="game-container">
     <object type="application/x-shockwave-flash" data="office.swf">
       <param name="movie" value="office.swf">
+      <param name="bgcolor" value="#FFFFFF"> 
     </object>
   </div>
 </body>
